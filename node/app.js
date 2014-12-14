@@ -3,10 +3,16 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes');
+var express = require('express');
+var routes = require('./routes');
 
 var app = module.exports = express.createServer();
+var io = require('socket.io')(app);
+
+var zmq = require('zmq');
+var zmq_publisher = zmq.socket('pub');
+
+zmq_publisher.bindSync("tcp://127.0.0.1:45321");
 
 // Configuration
 
@@ -37,12 +43,53 @@ express.compiler.compilers.less.compile = function(str, fn){
     var less = require('less');var parser = new less.Parser({paths: [TWITTER_BOOTSTRAP_PATH]});
     parser.parse(str, function(err, root){fn(err, root.toCSS());});
   } catch (err) {fn(err);}
-}
+};
 
 // Routes
 
 app.get('/', routes.index);
 
-app.listen(3000, function(){
+app.listen(1234, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+});
+
+var themes = [
+
+];
+
+function isValidPasscode(passcode) {
+  return true;
+}
+
+function isValidColor(color) {
+  var colorTester = /^#[0-9a-f]{6}$/;
+  return colorTester.test(color);
+}
+
+function isValidTheme(theme) {
+  for (var i in themes) {
+    if (theme == themes[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+io.on('connection', function (socket) {
+  socket.on('color', function (data) {
+    color = data['color'];
+    passcode = data['passcode'];
+    if (isValidColor(color) && isValidPasscode(passcode)) {
+      update = {type: 'color', color: color};
+      zmq_publisher.send(JSON.stringify(update));
+    }
+  });
+  socket.on('theme', function (data) {
+    color = data['theme'];
+    passcode = data['passcode'];
+    if (isValidTheme(theme) && isValidPasscode(passcode)) {
+      update = {type: 'theme', theme: theme};
+      zmq_publisher.send(JSON.stringify(update));
+    }
+  });
 });

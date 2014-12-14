@@ -4,6 +4,7 @@
   height: 193px;
   border-radius: 5px;
   border: 1px solid black;
+  background-color: black;
 }
 
 #theme-selector .btn-group
