@@ -5,8 +5,8 @@
       <li><a href="//dorm.jackserrino.com">3D Printer Control</a></li>
     </ul>
   	<div class="navbar-form navbar-right">
-  		<a class="btn btn-success">Turn On Lights</a>
-			<a class="btn btn-danger">Turn Off Lights</a>
+  		<a class="btn btn-success" id="turn-on-button">On</a>
+			<a class="btn btn-danger" id="turn-off-button">Off</a>
 		</div>
   </div>
 </div>
@@ -22,20 +22,22 @@
 		</div>
   </div>
   <hr />
-  <h2>Manually Pick A Color...</h2>
-  <div id="strip-picker" class="text-center">
+  <h2>First, Pick a Strip</h2>
+   <div id="strip-picker" class="text-center">
   	<div id="radio-button" class="btn-group" data-toggle="buttons">
-			<label class="btn btn-default">
-		    <input type="radio" name="options" id="option1" autocomplete="off" checked>Left
+			<label class="btn btn-default" data-value="l">
+		    <input type="radio" name="options" id="option1" autocomplete="off">Left
 		  </label>
-		  <label class="btn btn-default active">
+		  <label class="btn btn-default active" data-value="rl">
 		    <input type="radio" name="options" id="option2" autocomplete="off">Both
 		  </label>
-		  <label class="btn btn-default">
+		  <label class="btn btn-default" data-value="r">
 		    <input type="radio" name="options" id="option3" autocomplete="off">Right
 		  </label>
 		</div>
   </div>
+  <hr />
+  <h2>Then, Manually Pick A Color...</h2>
 	<div class="container">
 		<div class="container col-sm-6">
 			<div class="pull-right" id="color-preview"></div>
@@ -47,50 +49,14 @@
 	<hr />
   <h2>...Or Select A Theme</h2>
 	<div id="theme-selector" class="container text-center">
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default">Party</button>
-			<button type="button" class="btn btn-default">Rave</button>
-			<button type="button" class="btn btn-default">Seizure</button>
-		</div>
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default">Strobe</button>
-			<button type="button" class="btn btn-default">Faster</button>
-			<button type="button" class="btn btn-default">Fastest</button>
-		</div>
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default">Chill</button>
-			<button type="button" class="btn btn-default">Relax</button>
-			<button type="button" class="btn btn-default">Sleep</button>
-		</div>
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default">Love</button>
-			<button type="button" class="btn btn-default">Loving</button>
-			<button type="button" class="btn btn-default">Lust</button>
-		</div>
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default">Rainbow</button>
-			<button type="button" class="btn btn-default">Double Rainbow</button>
-		</div>
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default">Video</button>
-			<button type="button" class="btn btn-default">TV Show</button>
-			<button type="button" class="btn btn-default">Movie</button>
-		</div>
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default">Studying</button>
-			<button type="button" class="btn btn-default">All nighter</button>
-			<button type="button" class="btn btn-default">Adderall</button>
-		</div>
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default">Drunk</button>
-			<button type="button" class="btn btn-default">Wasted</button>
-			<button type="button" class="btn btn-default">Blackout</button>
-		</div>
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default">High</button>
-			<button type="button" class="btn btn-default">Blazed</button>
-			<button type="button" class="btn btn-default">Gone</button>
-		</div>
+		<button type="button" class="btn btn-default theme-button" data-theme="calm">Calm</button>
+		<button type="button" class="btn btn-default theme-button" data-theme="mellow">Mellow</button>
+		<button type="button" class="btn btn-default theme-button" data-theme="study">Study</button>
+		<button type="button" class="btn btn-default theme-button" data-theme="movie1">Movie I</button>
+		<button type="button" class="btn btn-default theme-button" data-theme="movie2">Movie II</button>
+		<button type="button" class="btn btn-default theme-button" data-theme="party">Party</button>
+		<button type="button" class="btn btn-default theme-button" data-theme="seizure1">Seizure I</button>
+		<button type="button" class="btn btn-default theme-button" data-theme="seizure2">Seizure II</button>
 	</div>
 	<hr />
 	<small>Made With &#9829; by Jack Serrino 2015

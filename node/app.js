@@ -54,8 +54,20 @@ app.listen(1234, function(){
 });
 
 var themes = [
-
+  "calm",
+  "mellow",
+  "study",
+  "movie1",
+  "movie2",
+  "party",
+  "seizure1",
+  "seizure2",
 ];
+
+
+function isValidStrip(strip) {
+  return strip == "l" || strip == "rl" || strip == "r";
+}
 
 function isValidPasscode(passcode) {
   return true;
@@ -79,16 +91,18 @@ io.on('connection', function (socket) {
   socket.on('color', function (data) {
     color = data['color'];
     passcode = data['passcode'];
-    if (isValidColor(color) && isValidPasscode(passcode)) {
-      update = {type: 'color', color: color};
+    strip = data['strip'];
+    if (isValidColor(color) && isValidPasscode(passcode) && isValidStrip(strip)) {
+      update = {type: 'color', strip: strip, color: color};
       zmq_publisher.send(JSON.stringify(update));
     }
   });
   socket.on('theme', function (data) {
-    color = data['theme'];
+    theme = data['theme'];
     passcode = data['passcode'];
-    if (isValidTheme(theme) && isValidPasscode(passcode)) {
-      update = {type: 'theme', theme: theme};
+    strip = data['strip'];
+    if (isValidTheme(theme) && isValidPasscode(passcode) && isValidStrip(strip)) {
+      update = {type: 'theme', strip: strip, theme: theme};
       zmq_publisher.send(JSON.stringify(update));
     }
   });
