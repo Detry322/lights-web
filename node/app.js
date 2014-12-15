@@ -66,9 +66,9 @@ var themes = [
 
 passcodei = new Date();
 var passcode = "" + (passcodei.getMonth() + 1);
-passcode += i.getDate();
+passcode += passcodei.getDate();
 passcode += "d";
-passcode += i.getDay();
+passcode += passcodei.getDay();
 console.log("The passcode is: " + passcode);
 
 function isValidStrip(strip) {
