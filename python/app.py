@@ -21,23 +21,32 @@ def setColor(p, c, (r, g, b)):
   #p.setPWM(bi,0,int(round(b*4095)))
   pass
 
+"""
+Rainbow(period, intensity)
+RandomColors(period, intensity)
+Strobe(black_period, light_period)
+RandomStrobe(black_period, light_period)
+RGBGradient(start, end, period)
+HSVGradient(start, end, period)
+"""
+
 def theme_to_handler(theme):
 	if theme == "calm":
-		return dsfg
+		return Rainbow(6000, 0.2)
 	elif theme == "mellow":
-		return dsfg
+		return Rainbow(1200, 0.005)
 	elif theme == "study":
-		return dsfg
+		return HSVGradient((.1, 0.31, 1), (.144444444, 0.7, 1), 1000)
 	elif theme == "movie1":
-		return dsfg
+		return HSVGradient((0.33,1,0.2),(0.66,1,0.2), 2000)
 	elif theme == "movie2":
-		return dsfg
+		return HSVGradient((0.83,1,0.2),(0.95,1,0.2), 2000)
 	elif theme == "party":
-		return dsfg
+		return RandomColors(100, 0.8)
 	elif theme == "seizure1":
-		return dsfg
+		return Strobe(50,50)
 	elif theme == "seizure2":
-		return dsfg
+		return RandomStrobe(60,40)
 
 while True:
 	left_color = left_handler.next()

@@ -23,8 +23,21 @@ class Rainbow(Theme):
 		self.intensity = float(intensity)
 	def next(self):
 		self.i += 1
-		self.i = self.i % self.period
+		self.i = self.i % int(self.period)
 		return colorsys.hsv_to_rgb(self.i/self.period, 1, self.intensity)
+
+class RandomColors(Theme):
+	def __init__(self, period, intensity):
+		self.i = 0
+		self.period = float(period)
+		self.intensity = float(intensity)
+		self.color = colorsys.hsv_to_rgb(random.random(), 1, self.intensity)
+	def next(self):
+		self.i += 1
+		if (self.i % self.period == 0):
+			self.color = colorsys.hsv_to_rgb(random.random(), 1, self.intensity)
+			self.i = 0
+		return self.color
 
 class Strobe(Theme):
 	def __init__(self, black_period, light_period):
@@ -47,14 +60,14 @@ class RandomStrobe(Theme):
 		self.lt = light_period
 		self.i = 0
 		self.black = True
-		self.color = (1,1,1)
+		self.color = colorsys.hsv_to_rgb(random.random(), 1, 0.8)
 	def next(self):
 		self.i += 1
 		period = self.bt if self.black else self.lt
 		if (self.i % period == 0):
 			self.black = not self.black
 			self.i = 0
-			self.color = colorsys.hsv_to_rgb(random.random(),1,0.8)
+			self.color = colorsys.hsv_to_rgb(random.random(), 1, 0.8)
 		ret = (0,0,0) if self.black else self.color
 		return ret
 
