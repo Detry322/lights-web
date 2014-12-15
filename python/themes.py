@@ -96,4 +96,4 @@ class HSVGradient(Theme):
 		self.i += 1
 		self.i = self.i % self.period
 		alpha = abs(self.i-(self.period/2))/(self.period/2.0)
-		return colorsys.hsv_to_rgb(interpolate(self.s, self.e, alpha))
+		return colorsys.hsv_to_rgb(*interpolate(self.s, self.e, alpha))

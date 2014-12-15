@@ -70,7 +70,12 @@ function isValidStrip(strip) {
 }
 
 function isValidPasscode(passcode) {
-  return true;
+  i = new Date();
+  str = "" + (i.getMonth() + 1);
+  str += i.getDate();
+  str += "d";
+  str += i.getDay();
+  return passcode == str;
 }
 
 function isValidColor(color) {

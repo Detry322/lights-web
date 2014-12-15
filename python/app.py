@@ -33,7 +33,7 @@ def theme_to_handler(theme):
 	if theme == "calm":
 		return Rainbow(6000, 0.2)
 	elif theme == "mellow":
-		return Rainbow(1200, 0.005)
+		return Rainbow(1200, 0.01)
 	elif theme == "study":
 		return HSVGradient((.1, 0.31, 1), (.144444444, 0.7, 1), 1000)
 	elif theme == "movie1":
@@ -43,9 +43,9 @@ def theme_to_handler(theme):
 	elif theme == "party":
 		return RandomColors(100, 0.8)
 	elif theme == "seizure1":
-		return Strobe(50,50)
+		return Strobe(2,2)
 	elif theme == "seizure2":
-		return RandomStrobe(60,40)
+		return RandomStrobe(3,2)
 
 while True:
 	left_color = left_handler.next()
