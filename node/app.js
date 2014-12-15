@@ -65,18 +65,18 @@ var themes = [
 ];
 
 passcodei = new Date();
-var passcode = "" + (passcodei.getMonth() + 1);
-passcode += passcodei.getDate();
-passcode += "d";
-passcode += passcodei.getDay();
-console.log("The passcode is: " + passcode);
+var pcode = "" + (passcodei.getMonth() + 1);
+pcode += passcodei.getDate();
+pcode += "d";
+pcode += passcodei.getDay();
+console.log("The passcode is: " + pcode);
 
 function isValidStrip(strip) {
   return strip == "l" || strip == "rl" || strip == "r";
 }
 
-function isValidPasscode(passcode) {
-  return passcode == str;
+function isValidPasscode(p) {
+  return pcode == p;
 }
 
 function isValidColor(color) {
