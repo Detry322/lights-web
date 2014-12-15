@@ -1,25 +1,24 @@
 import zmq
 import json
 from themes import *
-#from Adafruit_PWM_Servo_Driver import PWM
+from Adafruit_PWM_Servo_Driver import PWM
 context = zmq.Context()
 socket = context.socket(zmq.SUB)
 
 socket.connect('tcp://localhost:45321')
 socket.setsockopt(zmq.SUBSCRIBE, '')
 
-#pwm = PWM(0x40)
-#pwm.setPWMFreq(60)
+pwm = PWM(0x40)
+pwm.setPWMFreq(60)
 
 left_handler = Theme()
 right_handler = Theme()
 
 def setColor(p, c, (r, g, b)):
-  #ri, gi, bi = range(c*4,c*4+3)
-  #p.setPWM(ri,0,int(round(r*4095)))
-  #p.setPWM(gi,0,int(round(g*4095)))
-  #p.setPWM(bi,0,int(round(b*4095)))
-  pass
+  ri, gi, bi = range(c*4,c*4+3)
+  p.setPWM(ri,0,int(round(r*4095)))
+  p.setPWM(gi,0,int(round(g*4095)))
+  p.setPWM(bi,0,int(round(b*4095)))
 
 """
 Rainbow(period, intensity)
