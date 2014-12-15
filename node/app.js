@@ -64,17 +64,18 @@ var themes = [
   "seizure2",
 ];
 
+passcodei = new Date();
+var passcode = "" + (passcodei.getMonth() + 1);
+passcode += i.getDate();
+passcode += "d";
+passcode += i.getDay();
+console.log("The passcode is: " + passcode);
 
 function isValidStrip(strip) {
   return strip == "l" || strip == "rl" || strip == "r";
 }
 
 function isValidPasscode(passcode) {
-  i = new Date();
-  str = "" + (i.getMonth() + 1);
-  str += i.getDate();
-  str += "d";
-  str += i.getDay();
   return passcode == str;
 }
 
