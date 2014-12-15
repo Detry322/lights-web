@@ -64,19 +64,22 @@ var themes = [
   "seizure2",
 ];
 
-passcodei = new Date();
-var pcode = "" + (passcodei.getMonth() + 1);
-pcode += passcodei.getDate();
-pcode += "d";
-pcode += passcodei.getDay();
-console.log("The passcode is: " + pcode);
+function pcode() {
+  i = new Date();
+  p = "" + (passcodei.getMonth() + 1);
+  p += passcodei.getDate();
+  p += "d";
+  p += passcodei.getDay();
+  return p;
+}
+console.log("The passcode is: " + pcode());
 
 function isValidStrip(strip) {
   return strip == "l" || strip == "rl" || strip == "r";
 }
 
 function isValidPasscode(p) {
-  return pcode == p;
+  return pcode() == p;
 }
 
 function isValidColor(color) {
