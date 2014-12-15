@@ -66,10 +66,10 @@ var themes = [
 
 function pcode() {
   i = new Date();
-  p = "" + (passcodei.getMonth() + 1);
-  p += passcodei.getDate();
+  p = "" + (i.getMonth() + 1);
+  p += i.getDate();
   p += "d";
-  p += passcodei.getDay();
+  p += i.getDay();
   return p;
 }
 console.log("The passcode is: " + pcode());
